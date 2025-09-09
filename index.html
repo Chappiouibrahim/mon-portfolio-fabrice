@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabrice MBONERANE - Avocat & Expert en Développement</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et réinitialisation */
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #c9a74d;
+            --accent: #2c5c7a;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+        }
+
+        /* Header et Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8));
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* La balise img pour la photo de profil */
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            object-fit: cover; /* Assure que l'image couvre la zone sans déformation */
+            margin-bottom: 20px;
+            background-color: #ccc; /* Couleur de fond par défaut si l'image ne se charge pas */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .hero-content .subtitle {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            margin-top: 30px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 30px;
+        }
+
+        .values-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .value-item {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0;
+        }
+
+        .contact-info .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .contact-item {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Formation & Expérience */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+            width: 100%;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 55%;
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Goals Section */
+        .goals-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .goal-category {
+            flex: 1;
+            min-width: 300px;
+            margin: 15px;
+            padding: 30px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .goal-category h3 {
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .goal-list {
+            list-style: none;
+        }
+
+        .goal-list li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .goal-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background-color: white;
+                width: 250px;
+                height: 100vh;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                padding: 40px 0 0 20px;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .timeline:before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                left: 50px !important;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .profile-image { /* Ajustement pour la photo de profil sur mobile */
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">MBONERANE <span>Fabrice</span></a>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projects">Projets</a></li>
+                <li><a href="#goals">Objectifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="profile-container">
+                <img src="images/ma-photo.jpg" alt="Photo de Fabrice MbONERANE" class="profile-image">
+                <div>
+                    <h1>MBONERANE Fabrice</h1>
+                    <p class="subtitle">Avocat passionné du web & Développement communautaire</p>
+                    <p>Passionné par les droits humains, le développement communautaire et l'autonomisation des jeunes</p>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn">Me Contacter</a>
+                <a href="documents/mon-cv.pdf" download="Mon-CV-Fabrice-MBONERANE.pdf" class="btn btn-outline" id="download-cv">Télécharger mon CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>MBONERANE Fabrice est un professionnel burundais passionné par les droits humains, le développement communautaire et l'autonomisation des jeunes. Diplômé en Droit (2016) et avocat depuis 2018, il a plaidé pendant plusieurs années devant les tribunaux avant de s'engager pleinement dans le suivi-évaluation et le conseil juridique.</p>
+                    <p>Il occupe actuellement le poste de Monitoring & Evaluation Officer et Legal Affairs Officer au sein de Youth Agribusiness Incubator (YAIN), où il contribue à la conception, au suivi et à l'évaluation des projets, tout en assurant la conformité juridique.</p>
+                    <p>Fabrice est profondément investi dans la promotion de l'emploi des jeunes, l'égalité de genre et le bien-être des communautés.</p>
+                </div>
+            </div>
+
+            <div class="values-list">
+                <div class="value-item">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3>Intégrité</h3>
+                    <p>Agir avec honnêteté et transparence dans toutes les situations</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Engagement</h3>
+                    <p>Dévouement total envers les causes que je défends</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-gavel"></i>
+                    <h3>Justice</h3>
+                    <p>Poursuite de l'équité et du droit pour tous</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Développement durable</h3>
+                    <p>Engagement envers un impact positif et durable</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>mboneranefabrice8@gmail.com</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <h3>Téléphone</h3>
+                <p>+257 79905809</p>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Localisation</h3>
+                <p>Bujumbura, BURUNDI</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formation" class="formation">
+        <div class="container">
+            <h2 class="section-title">Formation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2005 - 2012</div>
+                        <h3>Licence en Droit</h3>
+                        <p>Formation juridique complète avec spécialisation en droits humains</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2003 - 2007</div>
+                        <h3>Lycée municipal Musaga</h3>
+                        <p>Études secondaires avec orientation en lettres et sciences humaines</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">1989 - 1996</div>
+                        <h3>École Primaire Musaga 1</h3>
+                        <p>Enseignement fondamental</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Expérience Professionnelle</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 – 2022</div>
+                        <h3>Avocat au barreau près la cour d'appel de Bujumbura</h3>
+                        <p>Plaidoyer devant les tribunaux, conseil juridique, défense des droits</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 à aujourd'hui</div>
+                        <h3>Monitoring & Evaluation Officer</h3>
+                        <p>Suivi et évaluation des projets, analyse des données, reporting</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 à aujourd'hui</div>
+                        <h3>Legal Affairs Officer</h3>
+                        <p>Conseil juridique, conformité des projets, gestion des aspects légaux</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projets à Impact</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Autonomisation des femmes burundaises</h3>
+                        <p>Projet d'épargne, crédit et investissement pour les femmes burundaises, particulièrement les jeunes femmes victimes de guerre.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Nutrition maternelle et infantile</h3>
+                        <p>Programme d'amélioration de la nutrition maternelle et infantile dans la province de Cankuzo.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Insertion socio-économique des jeunes</h3>
+                        <p>Initiative d'agro-entrepreneuriat pour l'insertion socio-économique des jeunes burundais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="goals" class="goals">
+        <div class="container">
+            <h2 class="section-title">Mes Objectifs</h2>
+            <div class="goals-container">
+                <div class="goal-category">
+                    <h3>Objectifs Professionnels</h3>
+                    <ul class="goal-list">
+                        <li>Devenir un leader reconnu en droit international des droits humains</li>
+                        <li>Développer une expertise avancée en suivi-évaluation pour contribuer à des projets à impact mesurable</li>
+                        <li>Conseiller et influencer les politiques publiques en faveur des jeunes et des femmes</li>
+                    </ul>
+                </div>
+                <div class="goal-category">
+                    <h3>Objectifs Personnels</h3>
+                    <ul class="goal-list">
+                        <li>Devenir la meilleure version de moi-même dans tout ce que j'entreprends</li>
+                        <li>Inspirer les jeunes et les femmes à croire en leur potentiel et à se prendre en main</li>
+                        <li>Contribuer à un Burundi plus équitable, prospère et durable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Restons en Contact</h2>
+            <div style="text-align: center;">
+                <p>N'hésitez pas à me contacter pour discuter de projets, collaborations ou opportunités.</p>
+                <a href="mailto:mboneranefabrice8@gmail.com" class="btn">Envoyer un Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MBONERANE Fabrice. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation mobile
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Animation au défilement (optionnel, mais déjà présent dans votre code)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        // Téléchargement du CV - Mise à jour pour ouvrir directement le fichier
+        // Le lien dans le HTML a déjà été modifié pour pointer vers le fichier PDF et utiliser l'attribut 'download'
+        // Le script JavaScript pour ce bouton n'est plus strictement nécessaire pour la fonctionnalité de téléchargement.
+        // Si vous souhaitez une confirmation ou une autre action, vous pouvez réintégrer un gestionnaire d'événements ici.
+
+        // Chargement de la photo de profil - Mise à jour pour utiliser une balise img
+        // La balise <img> est directement dans le HTML, donc ce script n'est plus nécessaire pour la photo.
+        // Si vous aviez des manipulations complexes à faire sur l'image, vous pourriez les garder ici.
+    </script>
+</body>
+</html>
